@@ -37,6 +37,14 @@
       },
 
       {
+        "Comments": "Convert one of the sharks into a land creature.",
+        "EMType": 47,
+        "EntityIndices": [ 3 ],
+        "NewEnemyType": 1,
+        "Exclusions": [ 40, 46, 52 ]
+      },
+
+      {
         "Comments": "Add some extra barrels to prevent slope softlock.",
         "EMType": 24,
         "Locations": [
@@ -670,7 +678,7 @@
               "Y": -3840,
               "Z": 75264,
               "Room": 24,
-              "Angle": -16734
+              "Angle": -16384
             }
           }
         ],
@@ -684,7 +692,7 @@
               "Y": -3840,
               "Z": 76288,
               "Room": 24,
-              "Angle": -16734
+              "Angle": -16384
             }
           },
 
@@ -728,7 +736,7 @@
               "Y": -5632,
               "Z": 67072,
               "Room": 67,
-              "Angle": -16354
+              "Angle": -16384
             }
           },
 
@@ -754,7 +762,7 @@
               "Y": -5632,
               "Z": 68096,
               "Room": 67,
-              "Angle": -16354
+              "Angle": -16384
             }
           },
 
@@ -832,7 +840,7 @@
               "Y": -5632,
               "Z": 68096,
               "Room": 67,
-              "Angle": 16374
+              "Angle": 16384
             }
           },
 
@@ -902,7 +910,7 @@
               "Y": -3840,
               "Z": 68096,
               "Room": 46,
-              "Angle": 16354
+              "Angle": 16384
             }
           },
 
@@ -928,7 +936,7 @@
               "Y": -3840,
               "Z": 69120,
               "Room": 46,
-              "Angle": 16354
+              "Angle": 16384
             }
           },
 
@@ -954,7 +962,7 @@
               "Y": -3840,
               "Z": 70144,
               "Room": 46,
-              "Angle": 16354
+              "Angle": 16384
             }
           },
 
@@ -1032,7 +1040,7 @@
               "Y": -3840,
               "Z": 69120,
               "Room": 46,
-              "Angle": -16374
+              "Angle": -16384
             }
           },
 
@@ -1058,7 +1066,7 @@
               "Y": -3840,
               "Z": 68096,
               "Room": 46,
-              "Angle": -16374
+              "Angle": -16384
             }
           },
 

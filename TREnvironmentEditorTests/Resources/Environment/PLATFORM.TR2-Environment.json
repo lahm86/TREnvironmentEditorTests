@@ -209,15 +209,25 @@
           "Room": 20,
           "Flags": 0
         },
-        "AttachToLocation": {
-          "X": 42304,
-          "Y": 17920,
-          "Z": 77293,
-          "Room": 70
-        },
+        "AttachToLocations": [
+          {
+            "X": 42304,
+            "Y": 17920,
+            "Z": 77293,
+            "Room": 70
+          }
+        ],
         "CameraAction": {
           "Value": 37123
         }
+      },
+
+      {
+        "Comments": "Convert a couple of Steves into land creatures.",
+        "EMType": 47,
+        "EntityIndices": [ 110, 111 ],
+        "NewEnemyType": 1,
+        "Exclusions": [ 40, 46, 52 ]
       },
 
       {
@@ -621,7 +631,7 @@
             "Flags": 0
           },
           "LookAtItem": 89,
-          "AttachToItem": 90,
+          "AttachToItems": [ 90 ],
           "CameraAction": {
             "Value": 2
           }

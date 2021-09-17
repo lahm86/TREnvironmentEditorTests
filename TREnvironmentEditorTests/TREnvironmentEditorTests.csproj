@@ -44,6 +44,10 @@
     <Reference Include="TREnvironmentEditor">
       <HintPath>D:\GitHub\TR2-Rando\TREnvironmentEditor\bin\Debug\TREnvironmentEditor.dll</HintPath>
     </Reference>
+    <Reference Include="TRFDControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\GitHub\TR2-Rando\TR2RandomizerView\bin\Debug\Lib\TRFDControl.dll</HintPath>
+    </Reference>
     <Reference Include="TRLevelReader">
       <HintPath>D:\GitHub\TR2-Rando\TRLevelReader\bin\Debug\TRLevelReader.dll</HintPath>
     </Reference>
