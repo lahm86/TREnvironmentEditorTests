@@ -610,7 +610,7 @@
             "Room": 113
           },
           "Clicks": -2,
-          "SideTexture": 1425
+          "SideTexture": 1333
         },
 
         {
@@ -723,6 +723,10 @@
             },
             "TrigType": 0,
             "TrigActionList": [
+              {
+                "TrigAction": 8,
+                "Parameter": 46
+              },
               {
                 "TrigAction": 0,
                 "Parameter": 160
