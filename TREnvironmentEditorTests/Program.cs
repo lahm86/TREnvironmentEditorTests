@@ -28,17 +28,21 @@ namespace TREnvironmentEditorTests
             string rdir = @"D:\Games\steamapps\common\Tomb Raider (II) - Untouched\data\";
             string wdir = @"D:\Games\steamapps\common\Tomb Raider (II) - UKBox Dev\data\";
 
-            _laraPos = "34776, 10496, 42330, 17";
-            _laraItems = "112";
+            _laraPos = "70193, 2816, 73011, 53";
+            _laraItems = "";
 
             List<string> lvls = LevelNames.AsListWithAssault;
 
             while (true)
             {
+                Console.WriteLine("**********************************");
+                Console.WriteLine("Levels");
+                Console.WriteLine();
                 for (int i = 0; i < lvls.Count; i++)
                 {
                     Console.WriteLine("{0} - {1}", i, lvls[i]);
                 }
+                Console.WriteLine("**********************************");
 
                 string lvl = lvls[GetInt("Choose a level")];
                 _readPath = Path.Combine(rdir, lvl);
@@ -49,13 +53,16 @@ namespace TREnvironmentEditorTests
 
                 EMEditorMapping mapping = EMEditorMapping.Get(lvl);
                 
+                Console.WriteLine("**********************************");
+                Console.WriteLine("Variable Options");
                 Console.WriteLine();
                 Console.WriteLine("0 - AllWithin");
                 Console.WriteLine("1 - OneOf");
                 Console.WriteLine("2 - Validate locations");
+                Console.WriteLine("**********************************");
 
-                Console.WriteLine("Each All and Any functions will be applied by default.");
-                int opt = GetInt("Pick a variable option to run:");
+                Console.WriteLine("Each ALL and ANY functions will be applied by default.");
+                int opt = GetInt("Pick a variable option from above to run");
                 Console.WriteLine();
 
                 if (opt == 0)
@@ -93,7 +100,10 @@ namespace TREnvironmentEditorTests
 
         static void PickPositioning()
         {
-            Console.WriteLine("Choose Lara's position [X, Y, Z, Room] or leave blank to use the default.");
+            Console.WriteLine("**********************************");
+            Console.WriteLine("Lara");
+            Console.WriteLine("**********************************");
+            Console.WriteLine("Choose Lara's position [X, Y, Z, Room] or press Enter to use the defaault.");
             Console.WriteLine("Current: {0}", _laraPos);
             string newPos = Console.ReadLine();
             if (!string.IsNullOrEmpty(newPos))
@@ -101,7 +111,7 @@ namespace TREnvironmentEditorTests
                 _laraPos = newPos;
             }
 
-            Console.WriteLine("Move items to Lara [3, 5, 9...etc] or leave blank to use the default.");
+            Console.WriteLine("Move items to Lara [3, 5, 9...etc] or press enter to use the default.");
             Console.WriteLine("Current: {0}", _laraItems);
             string newItems = Console.ReadLine();
             if (!string.IsNullOrEmpty(newItems))
@@ -291,7 +301,8 @@ namespace TREnvironmentEditorTests
             }
 
             // Need to ensure mirroring has been done
-            //TestEditorSet(level, mapping.Mirrored);
+            new EMMirrorFunction().ApplyToLevel(level);
+            TestEditorSet(level, mapping.Mirrored);
         }
 
         static void TestEditorSet(TR2Level level, EMEditorSet set)
