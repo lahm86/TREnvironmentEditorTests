@@ -1,9 +1,541 @@
 {
   "All": [],
 
-  "Any": [],
+  "Any": [
+    [
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 127,
+        "TargetLocation": {
+          "X": 75264,
+          "Y": 27136,
+          "Z": 55808,
+          "Room": 82,
+          "Angle": 0
+        }
+      },
 
-  "AllWithin": [],
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 128,
+        "TargetLocation": {
+          "X": 73216,
+          "Y": 27136,
+          "Z": 55808,
+          "Room": 82,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 129,
+        "TargetLocation": {
+          "X": 75264,
+          "Y": 27136,
+          "Z": 57856,
+          "Room": 82,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 130,
+        "TargetLocation": {
+          "X": 73216,
+          "Y": 27136,
+          "Z": 57856,
+          "Room": 82,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 131,
+        "TargetLocation": {
+          "X": 75264,
+          "Y": 27136,
+          "Z": 59904,
+          "Room": 82,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Drop Room 81 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 132,
+        "TargetLocation": {
+          "X": 73216,
+          "Y": 27136,
+          "Z": 59904,
+          "Room": 82,
+          "Angle": 0
+        }
+      }
+    ],
+    [
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 227,
+        "TargetLocation": {
+          "X": 75264,
+          "Y": 23296,
+          "Z": 36608,
+          "Room": 166,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 228,
+        "TargetLocation": {
+          "X": 77312,
+          "Y": 23296,
+          "Z": 36608,
+          "Room": 166,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 229,
+        "TargetLocation": {
+          "X": 79360,
+          "Y": 23296,
+          "Z": 36608,
+          "Room": 166,
+          "Angle": 0
+        }
+      },
+
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 230,
+        "TargetLocation": {
+          "X": 80384,
+          "Y": 23296,
+          "Z": 48364,
+          "Room": 167,
+          "Angle": -32768
+        }
+      },
+
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 231,
+        "TargetLocation": {
+          "X": 78336,
+          "Y": 23296,
+          "Z": 48364,
+          "Room": 167,
+          "Angle": -32768
+        }
+      },
+
+      {
+        "Comments": "Move Room 167 Spike walls lower to increase difficulty",
+        "EMType": 44,
+        "EntityIndex": 232,
+        "TargetLocation": {
+          "X": 76288,
+          "Y": 23296,
+          "Z": 48364,
+          "Room": 167,
+          "Angle": -32768
+        }
+      }
+    ]
+  ],
+
+  "AllWithin": [
+    [
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 61952,
+            "Y": 19200,
+            "Z": 45568,
+            "Room": 66,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 61952,
+            "Y": 19200,
+            "Z": 46592,
+            "Room": 66,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 61952,
+            "Y": 19200,
+            "Z": 46592,
+            "Room": 66,
+            "Angle": 0
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 61952,
+            "Y": 19200,
+            "Z": 43520,
+            "Room": 66,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 50688,
+            "Y": 19200,
+            "Z": 43520,
+            "Room": 66,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 50688,
+            "Y": 19200,
+            "Z": 43520,
+            "Room": 66,
+            "Angle": -16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 50688,
+            "Y": 19200,
+            "Z": 46592,
+            "Room": 66,
+            "Angle": -16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the terracotta room button.",
+          "EMType": 41,
+          "EntityIndex": 109,
+          "Location": {
+            "X": 50688,
+            "Y": 19200,
+            "Z": 46592,
+            "Room": 66,
+            "Angle": 0
+          }
+        }
+      ]
+    ],
+
+    [
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 18944,
+            "Y": 12288,
+            "Z": 51712,
+            "Room": 8,
+            "Angle": -16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 27136,
+            "Y": 12288,
+            "Z": 52736,
+            "Room": 98,
+            "Angle": 0
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 28160,
+            "Y": 12288,
+            "Z": 52736,
+            "Room": 98,
+            "Angle": 0
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 29184,
+            "Y": 12288,
+            "Z": 52736,
+            "Room": 145,
+            "Angle": 0
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 29184,
+            "Y": 12288,
+            "Z": 52736,
+            "Room": 145,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 28160,
+            "Y": 12288,
+            "Z": 50688,
+            "Room": 98,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 28160,
+            "Y": 12288,
+            "Z": 50688,
+            "Room": 98,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the button near the tilt bridge/rolling spindle.",
+          "EMType": 41,
+          "EntityIndex": 6,
+          "Location": {
+            "X": 27136,
+            "Y": 12288,
+            "Z": 50688,
+            "Room": 98,
+            "Angle": -32768
+          }
+        }
+      ]
+    ],
+
+    [
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 34304,
+            "Y": 22272,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": -16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 36352,
+            "Y": 22272,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 36352,
+            "Y": 22272,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 30208,
+            "Y": 22784,
+            "Z": 40448,
+            "Room": 14,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 40448,
+            "Y": 23040,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 41472,
+            "Y": 23040,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 42496,
+            "Y": 23040,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": -32768
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 42496,
+            "Y": 23040,
+            "Z": 39424,
+            "Room": 14,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 42496,
+            "Y": 23040,
+            "Z": 40448,
+            "Room": 14,
+            "Angle": 16384
+          }
+        }
+      ],
+      [
+        {
+          "Comments": "Potential new position for the keyhole 3.",
+          "EMType": 41,
+          "EntityIndex": 15,
+          "Location": {
+            "X": 42496,
+            "Y": 23040,
+            "Z": 40448,
+            "Room": 14,
+            "Angle": 0
+          }
+        }
+      ]
+    ]
+  ],
 
   "OneOf": [],
 
