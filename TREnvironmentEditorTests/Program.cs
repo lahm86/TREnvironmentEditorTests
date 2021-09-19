@@ -22,14 +22,16 @@ namespace TREnvironmentEditorTests
 
         static string _readPath, _writePath, _laraPos, _laraItems;
         static EMType[] _exclusions = new EMType[] { };
+        static bool _ukFloater;
 
         static void Main()
         {
             string rdir = @"D:\Games\steamapps\common\Tomb Raider (II) - Untouched\data\";
             string wdir = @"D:\Games\steamapps\common\Tomb Raider (II) - UKBox Dev\data\";
 
-            _laraPos = "70193, 2816, 73011, 53";
+            _laraPos = "23033, -7420, 67158, 40";
             _laraItems = "";
+            _ukFloater = false;
 
             List<string> lvls = LevelNames.AsListWithAssault;
 
@@ -45,14 +47,18 @@ namespace TREnvironmentEditorTests
                 Console.WriteLine("**********************************");
 
                 string lvl = lvls[GetInt("Choose a level")];
-                _readPath = Path.Combine(rdir, lvl);
+                _readPath = Path.Combine(rdir, lvl == LevelNames.FLOATER && _ukFloater ? "floating_uk.tr2" : lvl);
                 _writePath = Path.Combine(wdir, lvl);
 
                 Console.WriteLine();
                 PickPositioning();
 
                 EMEditorMapping mapping = EMEditorMapping.Get(lvl);
-                
+                if (_ukFloater)
+                {
+                    mapping.AlternateTextures();
+                }
+
                 Console.WriteLine("**********************************");
                 Console.WriteLine("Variable Options");
                 Console.WriteLine();
@@ -240,12 +246,12 @@ namespace TREnvironmentEditorTests
                 int setIndex = mapping.OneOf.Count == 1 ? 0 : GetInt(string.Format("Choose a set (0 - {0})", mapping.OneOf.Count - 1));
                 EMEditorGroupedSet set = mapping.OneOf[setIndex];
 
-                int modIndex = set.Followers.Length == 1 ? 0 : GetInt(string.Format("Choose a follower mod (0 - {0}). Enter -1 to loop", set.Followers.Length - 1));
+                int modIndex = set.Followers.Count == 1 ? 0 : GetInt(string.Format("Choose a follower mod (0 - {0}). Enter -1 to loop", set.Followers.Count - 1));
 
                 if (modIndex == -1)
                 {
                     Console.WriteLine();
-                    for (int i = 0; i < set.Followers.Length; i++)
+                    for (int i = 0; i < set.Followers.Count; i++)
                     {
                         TR2Level level = DefaultLoadLevel(mapping);
 
