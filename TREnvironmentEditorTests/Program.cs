@@ -23,13 +23,14 @@ namespace TREnvironmentEditorTests
         static string _readPath, _writePath, _laraPos, _laraItems;
         static EMType[] _exclusions = new EMType[] { };
         static bool _ukFloater;
+        static int _allAny;
 
         static void Main()
         {
             string rdir = @"D:\Games\steamapps\common\Tomb Raider (II) - Untouched\data\";
             string wdir = @"D:\Games\steamapps\common\Tomb Raider (II) - UKBox Dev\data\";
 
-            _laraPos = "23033, -7420, 67158, 40";
+            _laraPos = "34304, 256, 64000, 52";
             _laraItems = "";
             _ukFloater = false;
 
@@ -60,14 +61,26 @@ namespace TREnvironmentEditorTests
                 }
 
                 Console.WriteLine("**********************************");
+                Console.WriteLine("Apply ALL and ANY?");
+                Console.WriteLine("0 - None");
+                Console.WriteLine("1 - ALL only");
+                Console.WriteLine("2 - ANY only");
+                Console.WriteLine("3 - ALL and ANY");
+                Console.WriteLine("**********************************");
+                _allAny = GetInt("Pick an all/any option from above to run");
+                Console.WriteLine();
+
+                Console.WriteLine("**********************************");
                 Console.WriteLine("Variable Options");
                 Console.WriteLine();
                 Console.WriteLine("0 - AllWithin");
-                Console.WriteLine("1 - OneOf");
-                Console.WriteLine("2 - Validate locations");
+                Console.WriteLine("1 - ConditionalAllWithin");
+                Console.WriteLine("2 - OneOf");
+                Console.WriteLine("3 - Mirrored");
+                Console.WriteLine("4 - Validate locations");
+                Console.WriteLine("5 - Validate OneOf combined locations");
                 Console.WriteLine("**********************************");
 
-                Console.WriteLine("Each ALL and ANY functions will be applied by default.");
                 int opt = GetInt("Pick a variable option from above to run");
                 Console.WriteLine();
 
@@ -77,9 +90,17 @@ namespace TREnvironmentEditorTests
                 }
                 else if (opt == 1)
                 {
-                    RunOneOf(mapping);
+                    RunConditionalAllWithin(mapping);
                 }
                 else if (opt == 2)
+                {
+                    RunOneOf(mapping);
+                }
+                else if (opt == 3)
+                {
+                    RunMirrored(mapping);
+                }
+                else if (opt == 4)
                 {
                     if (GetOption("Validate all levels?"))
                     {
@@ -98,6 +119,10 @@ namespace TREnvironmentEditorTests
                         ValidateLocations(level, mapping);
                         Console.WriteLine();
                     }
+                }
+                else if (opt == 5)
+                {
+                    ValidateOneOfCombined(mapping);
                 }
 
                 Breaker();
@@ -133,11 +158,17 @@ namespace TREnvironmentEditorTests
             TR2Level level = _reader.ReadLevel(_readPath);
             MoveLara(level);
 
-            mapping.All.ApplyToLevel(level, _exclusions);
-
-            foreach (EMEditorSet mod in mapping.Any)
+            if (_allAny == 1 || _allAny == 3)
             {
-                mod.ApplyToLevel(level, _exclusions);
+                mapping.All.ApplyToLevel(level, _exclusions);
+            }
+
+            if (_allAny == 2 || _allAny == 3)
+            {
+                foreach (EMEditorSet mod in mapping.Any)
+                {
+                    mod.ApplyToLevel(level, _exclusions);
+                }
             }
 
             return level;
@@ -239,6 +270,55 @@ namespace TREnvironmentEditorTests
             }
         }
 
+        static void RunConditionalAllWithin(EMEditorMapping mapping)
+        {
+            if (mapping.ConditionalAllWithin.Count > 0)
+            {
+                int setIndex = mapping.ConditionalAllWithin.Count == 1 ? 0 : GetInt(string.Format("Choose a set (0 - {0})", mapping.ConditionalAllWithin.Count - 1));
+                EMConditionalEditorSet editorSet = mapping.ConditionalAllWithin[setIndex];
+                List<EMEditorSet> testSet;
+                if (GetInt("Simulate condition 0 = False, 1 = True") == 1)
+                {
+                    testSet = editorSet.OnTrue;
+                }
+                else
+                {
+                    testSet = editorSet.OnFalse;
+                }
+
+                int modIndex = testSet.Count == 1 ? 0 : GetInt(string.Format("Choose a mod for CAW {0} (0 - {1}). Enter -1 to loop", setIndex, testSet.Count - 1));
+                if (modIndex == -1)
+                {
+                    for (int i = 0; i < testSet.Count; i++)
+                    {
+                        TR2Level level = DefaultLoadLevel(mapping);
+
+                        EMEditorSet mod = testSet[i];
+                        mod.ApplyToLevel(level, _exclusions);
+
+                        WriteLevel(level);
+                        Console.WriteLine("Mod {0} applied, level saved...press return to continue.", i);
+                        Console.ReadLine();
+                    }
+                    Console.WriteLine("All mods executed.");
+                }
+                else
+                {
+                    TR2Level level = DefaultLoadLevel(mapping);
+
+                    EMEditorSet mod = testSet[modIndex];
+                    mod.ApplyToLevel(level, _exclusions);
+
+                    WriteLevel(level);
+                    Console.WriteLine("Mod applied, level saved.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("ConditionalAllWithin group is empty.");
+            }
+        }
+
         static void RunOneOf(EMEditorMapping mapping)
         {
             if (mapping.OneOf.Count > 0)
@@ -280,6 +360,91 @@ namespace TREnvironmentEditorTests
             }
         }
 
+        static void RunMirrored(EMEditorMapping mapping)
+        {
+            TR2Level level = DefaultLoadLevel(mapping);
+
+            EMMirrorFunction mirrorFunc = new EMMirrorFunction();
+            mirrorFunc.ApplyToLevel(level);
+
+            mapping.Mirrored.ApplyToLevel(level, _exclusions);
+
+            WriteLevel(level);
+            Console.WriteLine("Mod applied, level saved.");
+        }
+
+        static void ValidateOneOfCombined(EMEditorMapping mapping)
+        {
+            if (mapping.OneOf.Count > 1)
+            {
+                int setIndex1, setIndex2;
+                if (mapping.OneOf.Count > 2)
+                {
+                    while (true)
+                    {
+                        setIndex1 = GetInt(string.Format("Choose the 1st set (0 - {0})", mapping.OneOf.Count - 1));
+                        setIndex2 = GetInt(string.Format("Choose the 2nd set (0 - {0})", mapping.OneOf.Count - 1));
+                        if (setIndex1 == setIndex2)
+                        {
+                            Console.WriteLine("Choose unique sets!");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    setIndex1 = 0;
+                    setIndex2 = 1;
+                }
+
+                TR2Level level = DefaultLoadLevel(mapping);
+                FDControl control = new FDControl();
+                control.ParseFromLevel(level);
+
+                EMEditorGroupedSet set1 = mapping.OneOf[setIndex1];
+                EMEditorGroupedSet set2 = mapping.OneOf[setIndex2];
+                for (int i = 0; i < set1.Followers.Count; i++)
+                {
+                    EMLocation slot1Location = GetSlotMoveLocation(set1.Followers[i]);
+                    if (slot1Location != null)
+                    {
+                        TRRoomSector sector1 = FDUtilities.GetRoomSector(slot1Location.X, slot1Location.Y, slot1Location.Z, slot1Location.Room, level, control);
+                        for (int j = 0; j < set2.Followers.Count; j++)
+                        {
+                            EMLocation slot2Location = GetSlotMoveLocation(set2.Followers[j]);
+                            if (slot2Location != null)
+                            {
+                                TRRoomSector sector2 = FDUtilities.GetRoomSector(slot2Location.X, slot2Location.Y, slot2Location.Z, slot2Location.Room, level, control);
+                                if (sector1 == sector2)
+                                {
+                                    Console.WriteLine("Set {0} follower {1} has the same location as set {2} follower {3}", setIndex1, i, setIndex2, j);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("OneOf group requires at least 2 members.");
+            }
+        }
+
+        static EMLocation GetSlotMoveLocation(EMEditorSet set)
+        {
+            foreach (BaseEMFunction f in set)
+            {
+                if (f is EMMoveSlotFunction s)
+                {
+                    return s.Location;
+                }
+            }
+            return null;
+        }
+
         static void ValidateLocations(TR2Level level, EMEditorMapping mapping)
         {
             TestEditorSet(level, mapping.All);
@@ -292,6 +457,18 @@ namespace TREnvironmentEditorTests
             foreach (List<EMEditorSet> lst in mapping.AllWithin)
             {
                 foreach (EMEditorSet set in lst)
+                {
+                    TestEditorSet(level, set);
+                }
+            }
+
+            foreach (EMConditionalEditorSet condSet in mapping.ConditionalAllWithin)
+            {
+                foreach (EMEditorSet set in condSet.OnTrue)
+                {
+                    TestEditorSet(level, set);
+                }
+                foreach (EMEditorSet set in condSet.OnFalse)
                 {
                     TestEditorSet(level, set);
                 }
