@@ -1,7 +1,7 @@
 {
   "All": [
     {
-      "Comments": "Fix the corner in the first yeti room to stop enemies trying to walk through the wall.",
+      "Comments": "Fix OG issue of incorrect box overlaps between rooms 74 & 35.",
       "EMType": 122,
       "RemoveLinks": {
         "466": [ 704 ],

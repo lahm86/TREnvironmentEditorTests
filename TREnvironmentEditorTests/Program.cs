@@ -17,11 +17,11 @@ namespace TREnvironmentEditorTests
 {
     class Program
     {
-        static TR2LevelReader _reader = new TR2LevelReader();
-        static TR2LevelWriter _writer = new TR2LevelWriter();
+        static readonly TR2LevelReader _reader = new TR2LevelReader();
+        static readonly TR2LevelWriter _writer = new TR2LevelWriter();
 
         static string _readPath, _writePath, _laraPos, _laraItems;
-        static EMType[] _exclusions = new EMType[] { };
+        static readonly EMType[] _exclusions = new EMType[] { };
         static bool _ukFloater;
         static int _allAny;
 
@@ -30,8 +30,8 @@ namespace TREnvironmentEditorTests
             string rdir = @"D:\Games\steamapps\common\Tomb Raider (II) - Untouched\data\";
             string wdir = @"D:\Games\steamapps\common\Tomb Raider (II) - UKBox Dev\data\";
 
-            _laraPos = "34304, 256, 64000, 52";
-            _laraItems = "";
+            _laraPos = "52727, -9216, 61967, 2";
+            _laraItems = "6,31";
             _ukFloater = false;
 
             List<string> lvls = LevelNames.AsListWithAssault;
@@ -61,11 +61,12 @@ namespace TREnvironmentEditorTests
                 }
 
                 Console.WriteLine("**********************************");
-                Console.WriteLine("Apply ALL and ANY?");
+                Console.WriteLine("Apply ALL, NONPURIST and ANY?");
                 Console.WriteLine("0 - None");
                 Console.WriteLine("1 - ALL only");
                 Console.WriteLine("2 - ANY only");
-                Console.WriteLine("3 - ALL and ANY");
+                Console.WriteLine("3 - NONPURIST only");
+                Console.WriteLine("4 - ALL, NONPURIST and ANY");
                 Console.WriteLine("**********************************");
                 _allAny = GetInt("Pick an all/any option from above to run");
                 Console.WriteLine();
@@ -158,19 +159,24 @@ namespace TREnvironmentEditorTests
             TR2Level level = _reader.ReadLevel(_readPath);
             MoveLara(level);
 
-            if (_allAny == 1 || _allAny == 3)
+            if (_allAny == 1 || _allAny == 4)
             {
                 mapping.All.ApplyToLevel(level, _exclusions);
             }
 
-            if (_allAny == 2 || _allAny == 3)
+            if (_allAny == 1 || _allAny == 3)
+            {
+                mapping.NonPurist.ApplyToLevel(level, _exclusions);
+            }
+
+            if (_allAny == 2 || _allAny == 4)
             {
                 foreach (EMEditorSet mod in mapping.Any)
                 {
                     mod.ApplyToLevel(level, _exclusions);
                 }
             }
-
+            
             return level;
         }
 
